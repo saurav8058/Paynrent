@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href ="/static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+
+    <title>Login | Paynrent </title>
+</head>
+<body>
+    <form action="/api/checkadminlogin" method="get">
+    <div class="wrapper">
+        <div class="container main">
+           <div class="row">
+
+            <div class="col-md-6 side-image">
+                <!-- <img src="pnrl.png"   alt=""> -->
+                <div class="text">
+                    <!-- <p>Self drive car rentals in India <i> Paynrent </i>
+                    </p> -->
+                </div>
+                <div style="padding: 20px; width:100%;display:flex;justify-content: center;">
+                    <!-- <img src="carlogo.png" width="300" height="300" /> -->
+                </div>
+            </div>
+            <div class="col-md-6 right">
+                <div class="input-box" >
+                   
+                    <h1>
+                    <header>Login  account</header>
+                     </h1>
+                    <!-- <div style="padding: 20px; width:100%;display:flex;justify-content: center;">
+                        <img src="pnrl.png" width="60" height="60" />
+                    </div> -->
+                    <!-- <i class="bi bi-key"></i> -->
+                    <div>
+                        
+                    </div>
+                
+                    <div class="input-field">
+                        
+                        <label for="email">Email/Mobile Number</label>
+                        <input type="text" class="input" id="mobileno" name="mobileno" required autocomplete="off">
+                        
+                        
+                    </div>  
+                        <div class="input-field">
+                            <label for="submit">Password</label>
+                            <input type="password" class="input" name="password" id="submit" required >
+                            
+                        </div> 
+                        <div class="input-field">
+                            <input type="submit" class="submit" id="password" value="Login" required >
+                        </div>
+                        
+                        <div>
+                           
+                            <h4 style="color:crimson;">{{message}}</h4>
+                            
+                        </div>
+                    
+                
+            </div>
+           </div>
+        </div>
+    </div>
+</div>
+</form>
+</body>
+</html>

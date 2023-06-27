@@ -1,0 +1,180 @@
+<style>
+    .maincontainer{
+        width: 100vw;
+        height: 100vh;
+        background: #81ecec;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box{
+        background: #fff;
+        width: 70vw;
+        height: auto;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    .headingtext{
+        font-size: 22px;
+        font-family: Poppins;
+        font-weight: bold;
+        padding: 5px;
+        letter-spacing: 1px;
+    }
+    .labelstyle{
+        font-size: 15px;
+        font-family: Poppins;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+</style>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    </head>
+    <div class="maincontainer">
+        <div class="box">
+            <form action="/api/editvehicle">
+                <div class="col-md-12 headingtext">
+                    <img src="/static/logo.png" style="width: 60px; height: 50px; padding-right: 8px;">
+                    Vehicle Details
+                </div>
+                <input type="hidden" name="id" value="{{data.id}}">
+                <div class="row g-3" style="margin-top: 15px;">
+                    <div class="col-md-4">
+                        <label for="category_id" class="form-label labelstyle">Category Id</label>
+                        <input required type="text" value="{{data.category_id}}" name="category_id" id="category_id" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="subcategory_id" class="form-label labelstyle">Sub Category Id</label>
+                        <input required type="text" value="{{data.subcategory_id}}" name="subcategory_id" id="subcategory_id" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="model_year" class="form-label labelstyle">Model Year</label>
+                        <input required type="text" value="{{data.model_year}}" name="model_year" id="model_year" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-3"  style="margin-top: 7px;">
+                    <div class="col-md-4">
+                        <label for="variant" class="form-label labelstyle">Varient</label>
+                        <input required type="text" value="{{data.variant}}" name="variant" id="variant" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="price" class="form-label labelstyle">Price</label>
+                        <input required type="text" value="{{data.price}}" name="price" id="price" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="labelstyle">Insured</div>
+                        <div class="row g-2"  style="display: flex; justify-content: space-evenly; flex-direction: row;">
+                            {% if data.insured == 'Yes' %}
+                            <div class="col-md-2 form-check" style="padding-top: 8px;">
+                                <input checked class="form-check-input" type="radio" value="Yes" name="insured" id="insured">
+                                <label class="form-check-label" for="insured">
+                                  Yes
+                                </label>
+                            </div>
+                            <div class="col-md-2 form-check" style="padding-top: 8px;" >
+                                <input class="form-check-input" type="radio" value="No" name="insured" id="insured">
+                                <label class="form-check-label" for="insured">
+                                  No
+                                </label>
+                            </div>
+                            {% else %}
+                            <div class="col-md-2 form-check" style="padding-top: 8px;">
+                                <input class="form-check-input" type="radio" value="Yes" name="insured" id="insured">
+                                <label class="form-check-label" for="insured">
+                                  Yes
+                                </label>
+                            </div>
+                            <div class="col-md-2 form-check" style="padding-top: 8px;" >
+                                <input checked class="form-check-input" type="radio" value="No" name="insured" id="insured">
+                                <label class="form-check-label" for="insured">
+                                  No
+                                </label>
+                            </div>
+                            {% endif %}
+                        </div>
+                   </div>
+                </div>
+                <div class="row g-3"  style="margin-top: 7px;">
+                    <div class="col-md-4">
+                        <label for="registration_no" class="form-label labelstyle">RegisTration Number</label>
+                        <input required type="text" value="{{data.registration_no}}" name="registration_no" id="registration_no" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="owner_name" class="form-label labelstyle">Owner Name</label>
+                        <input required type="text" value="{{data.owner_name}}" name="owner_name" id="owner_name" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="mobile_no" class="form-label labelstyle">Mobile Number</label>
+                        <input required type="text" value="{{data.mobile_no}}" name="mobile_no" id="mobile_no" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-3"  style="margin-top: 7px;">
+                    <div class="col-md-4">
+                        <label for="color" class="form-label labelstyle">Colour</label>
+                        <input required type="text" value="{{data.color}}" name="color" id="color" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="fuel_type" class="form-label labelstyle">Fuel Type</label>
+                        <input required type="text" value="{{data.fuel_type}}" name="fuel_type" id="fuel_type" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="no_of_seats" class="form-label labelstyle">No. of Seats</label>
+                        <input required type="text" value="{{data.no_of_seats}}" name="no_of_seats" id="no_of_seats" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-3"  style="margin-top: 7px;">
+                    <div class="col-md-4">
+                        <div class="labelstyle">Transmission</div>
+                        <div class="row g-2"  style="display: flex; justify-content: space-evenly; flex-direction: row;">
+                            {% if data.transmission_type == 'Automatic' %}
+                            <div class="col-md-2 form-check" style="padding-top: 8px;">
+                                <input checked class="form-check-input" type="radio" value="Automatic" name="transmission_type" id="transmission_type">
+                                <label class="form-check-label" for="transmission_type">
+                                  Automatic
+                                </label>
+                            </div>
+                            <div class="col-md-2 form-check" style="padding-top: 8px;" >
+                                <input class="form-check-input" type="radio" value="Manual" name="transmission_type" id="transmission_type">
+                                <label class="form-check-label" for="transmission_type">
+                                  Manual
+                                </label>
+                            </div>
+                            {% else %}
+                            <div class="col-md-2 form-check" style="padding-top: 8px;">
+                                <input class="form-check-input" type="radio" value="Automatic" name="transmission_type" id="transmission_type">
+                                <label class="form-check-label" for="transmission_type">
+                                  Automatic
+                                </label>
+                            </div>
+                            <div class="col-md-2 form-check" style="padding-top: 8px;" >
+                                <input checked class="form-check-input" type="radio" value="Manual" name="transmission_type" id="transmission_type">
+                                <label class="form-check-label" for="transmission_type">
+                                  Manual
+                                </label>
+                            </div>
+                            {% endif %}
+                        </div>
+                   </div>
+                </div>
+               <div class="row g-2" style="margin-top: 15px;">
+                    <div class="col-md-6" style="display: flex; align-items: center;justify-content: center; ">
+                        <button style="width: 75%;" type="submit" value="Edit" name="btn" class="btn btn-primary labelstyle">Edit</button>
+                    
+                    </div>
+                    <div class="col-md-6" style="display: flex; align-items: center;justify-content: center;">
+                        <button style="width: 75%;" type="submit" value="Delete" name="btn" class="btn btn-primary labelstyle">Delete</button>
+                    </div>
+               </div>
+            </form>
+        </div>
+    </div>
+</html>

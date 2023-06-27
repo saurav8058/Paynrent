@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+  background: #ecf0f1;
+}
+
+/* Create two equal columns that floats next to each other */
+.column1 {
+  float: left;
+  width: 70%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+  /* border-radius: 5px; */
+  font-size: 14px;
+  font-family: Poppins;
+  background: #ecf0f1;
+  margin-bottom: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.column3 {
+  float: left;
+  width: 70%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+  /* border-radius: 5px; */
+  font-size: 14px;
+  font-family: Poppins;
+  background: #ecf0f1;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+}
+.lcolumn {
+  float: left;
+  width: 30%;
+  padding: 10px;
+  height: 200px; /* Should be removed. Only for demonstration */
+  /* border-radius: 5px; */
+  font-size: 14px;
+  font-family: Poppins;
+  background: #ecf0f1;
+}
+.rcolumn {
+  float: right;
+  width: 70%;
+  padding: 10px;
+  height: 200px; /* Should be removed. Only for demonstration */
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: Poppins;
+  background: #ecf0f1;
+}
+
+.lcol {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 50px; /* Should be removed. Only for demonstration */
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: Poppins;
+  background: #ecf0f1;
+}
+.rcol {
+  float: right;
+  width: 50%;
+  padding: 10px;
+  height: 50px; /* Should be removed. Only for demonstration */
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: Poppins;
+  background: #ecf0f1;
+}
+
+.column2 {
+  float: right;
+  width: 28%;
+  padding: 10px;
+  height: auto; /* Should be removed. Only for demonstration */
+  font-size: 14px;
+  font-family: Poppins;
+  background: #ecf0f1;
+  margin:2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+} 
+
+
+  hr {
+    border: none;
+    height: 2px;
+    background-color: #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  table, td, th {
+  border: 0px solid grey;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px;
+}
+
+th {
+  height: 5px;
+}
+.proceed-btn {
+  background-color: #2e86de; /* Green background color */
+  border: none; /* Remove border */
+  color: white; /* White text color */
+  padding: 12px 24px; /* Add padding */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Display as block element */
+  font-size: 16px; /* Font size */
+  margin: 10px; /* Add margin */
+  cursor: pointer; /* Add cursor on hover */
+  border-radius: 4px; /* Rounded corners */
+  font-weight: bold;
+}
+
+.proceed-btn:hover {
+  background-color: #48dbfb; /* Darker green background color on hover */
+}
+.box{ width: 330px;
+        height: 40px;
+        border:1px solid #778ca3;
+        border-radius: 10px 10px 10px 10px;
+        margin-bottom: 10px;
+}       
+.centerAlign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textStyle{
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 24;
+    text-align: center;
+    margin: 2px;
+   
+}
+  
+</style>
+</head>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+      
+      <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+     
+     
+
+</head>
+<body>
+
+
+<div class="row">
+  <div class="column1" style="background-color:#ecf0f1;">
+    <h2>{{vehicle.companyname}} {{vehicle.subcategoryname}}</h2>
+    
+     <div class="row">
+      <div class="lcolumn">
+        <img src="/{{vehicle.icon}}" width='100%'>
+        <div>
+          <div style="margin-left: 5%; font-family: Poppins; font-size: 10; font-weight: 600;">
+            <img src="/static/iconDiesel.svg" width="4%"><span style="padding-left: 2%; font-family: Poppins; font-size: 12; font-weight: 500;">{{vehicle.fuel_type}}</span>
+            <img src="/static/iconTransmission.svg" width="11%" style="padding-left: 6%;"><span style="padding-left: 2%; font-family: Poppins; font-size: 12; font-weight: 500;">{{vehicle.transmission_type}}</span>
+            <img src="/static/iconSeat.svg" width="10%" style="padding-left: 5%;"><span style="padding-left: 2%; font-family: Poppins; font-size: 12; font-weight: 500;">{{vehicle.no_of_seats}} Seats</span>
+        </div>
+       
+        </div>
+      </div>
+      <div class="rcolumn">
+        <!-- <h2>This is two</h2> -->
+        <center>
+        <h2>BOOKING DETAILS</h2>
+      </center>
+            
+              <hr>
+            <div class="row">
+              <div class="rcol">
+                <div style="justify-content: center;align-items: center; display: flex; width:200; font-family: Poppins;font-size: 16;">{{userdata.starttime}}   </div>
+              </div>
+
+              <div class="lcol">
+                <div style="justify-content: center;align-items: center; display: flex; width:200; font-family: Poppins;font-size: 16;">{{userdata.endtime}}   </div>
+
+              </div>
+            </div>
+            <div><center>{{userdata.days}}</center></div>
+             <div><center>{{userdata.city}}</center></div>
+             <div><center>Pricing Plan: Includes 438 kms, excludes fuel
+              Change plan</center></div>
+      </div>
+ <div>
+       
+</p>
+
+</div>
+    </div>
+     
+  </div>
+  <div class="column2" style="background: #ecf0f1;">
+     <center>
+    <h2>FARE DETAILS</h2>
+  </center>
+            <hr> 
+            <table>
+                <!-- <tr>
+                  <th>Firstname</th>
+                  
+                  <th>Savings</th>
+                </tr> -->
+                 <tr>
+                  <td>Base FARE</td>
+                  
+                  <td>&#8377;{{userdata.amount}}</td>
+                </tr>
+                 <tr>
+                    <td>Delivery and pickup charges</td>
+                    
+                    <td>&#8377;400</td>
+                  </tr>
+                  <tr>
+                    <td>Refundable and security Deposit</td>
+                    
+                    <td>&#8377;2500</td>
+                  </tr>
+                  
+                  
+                  <tr>
+                    <td><b>Total</b></td>
+                    
+                    <input type="hidden" id="amount" value="{{userdata.netamount}}"> 
+                    <td>&#8377;{{userdata.netamount}}</td>
+                    
+                  </tr>
+  
+                  <tr>
+                    <td>Kms Limit</td>
+                    
+                    <td>438Kms</td>
+                  </tr>
+                   <tr>
+                      <td>Fuel</td>
+                      
+                      <td>Excluded</td>
+                    </tr>
+                    <tr>
+                      <td>Extra Kms charge</td>
+                      
+                      <td>14Km/hr</td>
+                    </tr>
+                    <tr>
+                        <td>Tolls,Parking,Inter-State Taxes</td>
+                        
+                        <td>To Be paid by You</td>
+                      </tr>
+                    <tr>
+                    <tr>
+                      <td ><div class="box centerAlign"  >
+                        <img src="/static/mobile-icon.png" width="22" >
+                        <input class="textStyle" id="mobileno" type="text" placeholder="Mobile Number">
+                       </div></td>
+                       
+                    </tr>  
+
+                    <tr>
+                      <td >
+                        <div class="centerAlign"  style="width:360px" >
+                        <input type="button" id='otpbtn'   class="proceed-btn" value="Get Otp"/>
+                        </div>
+                      </td>
+                       
+                    </tr>  
+                    <tr>
+                      <td ><div class="box centerAlign"   >
+                        <img src="/static/email-icon.png" width="22" >
+                        <input class="textStyle" id="userotp" type="text" placeholder="Enter otp here...">
+                       </div></td>
+                    </tr>  
+                    <tr>
+                      <td ><div class="box centerAlign"   >
+                        <img src="/static/email-icon.png" width="22" >
+                        <input class="textStyle" id="emailaddress" type="text" placeholder="Email Address">
+                       </div></td>
+                    </tr>  
+                   
+                
+                
+                </table>
+
+    
+ 
+
+
+
+                <center>
+                <input type="button" id='rzp-button1'  data-toggle="modal" data-target="#myModal" class="proceed-btn" value="Proceed"/>
+            </center>
+  
+      
+      
+  </div>
+
+  <div class="column3" style="background: #ecf0f1;;">
+    <!-- <h2>Column 1</h2>
+    <h2>IMPORTANT POINTS TO REMEMBER</h2>
+            <hr> -->
+            <h2>IMPORTANT POINTS TO REMEMBER</h2>
+            <hr> 
+<!-- <p>Set the width of the table, and the height of the table header row:</p> -->
+
+<table>
+  <!-- <tr>
+    <th>Firstname</th>
+    
+    <th>Savings</th>
+  </tr> -->
+   <tr>
+    <td>CHANGE IN PRICING PLAN:</td>
+    
+    <td>The pricing plan (6 kms/hr, without fuel) cannot be changed after the booking is made</td>
+  </tr>
+  <tr>
+    <td>FUEL:</td>
+    
+    <td>In case you are returning the car at a lower fuel level than what was received, we will charge a flat Rs 500 refuelling service charge + actual fuel cost to get the tank to the same level as what was received</td>
+  </tr>
+  <tr>
+    <td>TOLLS, PARKING, INTER-STATE TAXES:</td>
+    
+    <td>To be paid by you.</td>
+  </tr>
+  
+    <td>ID VERIFICATION:</td>
+    
+    <td>Please keep your original Driving License handy. While delivering the car to you, our executive will verify your original Driving License and ID proof (same as the ones whose details were provided while making the booking). This verification is mandatory. In the unfortunate case where you cannot show these documents, we will not be able to handover the car to you, and it will be treated as a late cancellation (100% of the fare would be payable). Driving license printed on A4 sheet of paper (original or otherwise) will not be considered as a valid document.</td>
+  </tr>
+  <tr>
+    <td>PRE-HANDOVER INSPECTION:</td>
+    
+    <td>Please inspect the car (including the fuel gauge and odometer) thoroughly before approving the checklist.</td>
+  </tr>
+  
+
+
+</table>
+            
+            
+            
+
+
+</div>
+ 
+      
+
+
+
+</body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  var otp=''
+  function generateOtp()
+  {
+    otp=parseInt((Math.random()*8999)+1000)
+    alert(otp)
+  }
+  $('#otpbtn').click(function(){
+    generateOtp()
+    })
+
+  var options=''
+  
+  document.getElementById('rzp-button1').onclick = function (e) {
+    if(emailaddress.value.length==0  || mobileno.value.length==0 || userotp.value.length==0)
+    { alert("You miss to fill  Mobile Number or Email Address or Otp")}
+    else
+    {
+    if(userotp.value==otp)
+    {
+   var rzp1 = new Razorpay(options);
+    rzp1.open();
+    e.preventDefault();}
+    else
+    {alert("Invalid Otp....")}
+
+    }
+      }
+   $(document).ready(function(){
+   $('#emailaddress').keyup(function(){
+   $.getJSON('http://localhost:8000/api/setemailmobile',{emailaddress:$('#emailaddress').val(),mobileno:$('#mobileno').val(),amount:$('#amount').val()},function(data){
+    console.log(data)
+    options = {
+    "key": "rzp_test_GQ6XaPC6gMPNwH", // Enter the Key ID generated from the Dashboard
+    "amount": data.amount*100,
+    "currency": "INR",
+    "description": "PayNRent",
+    "image": "http://localhost:8000/static/logo1.png",
+    "prefill":
+    {
+      "email": data.emailaddress,
+      "contact": data.mobileno,
+    }
+    ,
+    "handler": function (response) {
+      alert(response.razorpay_payment_id);
+    },
+    "modal": {
+      "ondismiss": function () {
+        if (confirm("Are you sure, you want to close the form?")) {
+          txt = "You pressed OK!";
+          console.log("Checkout form closed by the user");
+        } else {
+          txt = "You pressed Cancel!";
+          console.log("Complete the Payment")
+        }
+      }
+    }
+  };
+
+
+   })
+     
+   })
+
+   }) 
+
+</script>
+ 
+</html>

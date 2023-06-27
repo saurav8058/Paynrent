@@ -1,0 +1,17 @@
+<html>
+    <center>
+    <form action="/api/cat_save_icon" enctype="multipart/form-data" method="post"> {% csrf_token %}
+    <h1>{{data.cn.0}}</h1>
+    <input type="hidden" name="id" value="{{data.id.0}}" />
+    <input type="hidden" name="oldpic" value="{{data.icon.0}}" />
+    <img src="{{data.icon.0}}" width="300" height="300"/><br><br>
+    <b>Pls select new icon:</b><br><br>
+    <input type="file" name="icon" required>
+    <input type="submit">
+    </form>
+    
+
+
+    </center>
+
+</html>

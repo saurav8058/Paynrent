@@ -1,0 +1,258 @@
+<style>
+    .maincontainer{
+        background:#dfe6e9;
+        width:100%;
+        height: 100%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    .appbar{
+        
+        background:#fff;
+        width: 100vw;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        
+        align-items: center;
+    }
+  .sidebox{
+    width:500px;
+    height: 450px;
+    background: #fff;
+    border-radius: 10px;
+    margin:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+  }
+  .image_center{
+    width:600px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box{ width: 400px;
+        height: 50px;
+        border:1px solid #778ca3;
+        border-radius: 10px 10px 0px 0px;
+        border-bottom: none;
+}       
+.centerAlign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boxleft{
+    width: 200px;
+        height: 50px;
+        border:1px solid #778ca3;
+        border-radius: 0px 0px 0px 10px;
+        border-right: none;
+        
+        padding: 2px; 
+}
+
+.boxright{
+    width: 200px;
+        height: 50px;
+        border:1px solid #778ca3;
+        border-radius: 0px 0px 10px 0px;
+        
+}
+.button_style{ width: 400px;
+        height: 50px;
+        border:1px solid #49a6ba;;
+        border-radius: 10px;
+        margin-top: 30px;
+        background: #49a6ba;
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}    
+.textStyle{
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 24;
+    text-align: center;
+    margin: 2px;
+   
+}
+  
+.datetextStyle{
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 20;
+    text-align: center;
+   
+   width: 180px; 
+}
+</style>
+<html>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+      
+        <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" ></script>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+href=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
+/>
+<!-- datetimepicker jQuery CDN -->
+<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js">
+</script>
+
+<script>
+    $(document).ready(function(){
+     $(".city").click(function(){
+      $('#dcity').val($(this).attr('scity'))
+      $('#cheading').html(`Car rental in ${$(this).attr('scity')}`)
+
+     })
+
+     $(".datetimepicker").each(function () {
+        $(this).datetimepicker();
+      });
+    $("#enddate").change(function(){
+      const date1 = new Date($('#startdate').val());
+const date2 = new Date($('#enddate').val());
+const diffTime = Math.abs(date2 - date1);
+S=parseInt(diffTime/1000)
+M=parseInt(S/60)
+H=parseInt(M/60)
+D=parseInt(H/24)
+H=H%24
+
+
+
+
+const diffDays = parseInt(diffTime / (1000 * 60 * 60 * 24)); 
+console.log(diffDays+" Days   "+H+" Hours")
+$("#cartime").html(diffDays+" Days   "+H+" Hours");
+$("#dh").val(diffDays+":"+H);
+
+    })
+$('#btn').click(function(){
+  $.getJSON('http://localhost:8000/api/showvehiclelist',{city:$('#dcity').val(),starttime:$('#startdate').val(),endtime:$('#enddate').val(),dh:$('#dh').val()},function(data){
+  window.location.href="http://localhost:8000/api/uservehiclelist"
+})
+})
+    })
+
+    
+ </script>
+</head>
+<body>
+    <div class="maincontainer">
+        <div class="appbar">
+        <img src="/static/Logo1.png" style="height:40; width:60;margin-left: 5%;">
+ 
+        <div style="width:15%;margin-left: auto; display: flex; align-items: center;">
+        <i style="font-size: 32; margin-right: 2%;" class="fa fa-sign-in" aria-hidden="true"></i>
+        <span style="margin-left: 5%;">
+            Login & Signup
+        </span>
+       </div>
+ 
+    </div>
+    <div class="row" style="margin-top: 40px;">
+        <div class="col-md-6">
+         <div class="sidebox">
+           
+            <img src="/static/heading_leftbox.png" width="80%">
+            <img src="/static/rentals.png" width="25%">
+            <div id="cheading" style="padding:10px;font-family: Poppins; font-size: 18; font-weight: 600;">Self drive cars in India</div>
+        
+            <div>
+               <div class="box centerAlign" data-toggle="modal" data-target="#myModal">
+                <img src="/static/location.png" width="22" >
+                <input class="textStyle" id="dcity" type="text" placeholder="Select City....">
+               </div>
+               <div style="display: flex; flex-direction: row;">
+                  <div class="boxleft">
+                    <input type="text"  id="startdate"
+                    class="datetimepicker datetextStyle" size="15" placeholder="Start Date" />
+                   </div>
+                   <div class="boxright">
+                    <input type="text"  id="enddate"
+                    class="datetimepicker datetextStyle" size="15" placeholder="End Date" />
+                   </div>
+                </div>
+
+            </div>
+            <input type="hidden" id="dh" />
+            <div id="cartime" style="padding:10px;font-family: Poppins; font-size: 18; font-weight: 600;">
+
+            </div>
+            <div id="btn" class="button_style">
+                <div  style="display: flex; align-items: center; font-size: 20;color: #fff; font-weight: bold;">
+                     
+                  Search >
+                </div>
+
+            </div>
+         </div>
+         
+       
+        
+        
+        </div>
+        <div class="col-md-6">
+         <div class="image_center">
+        <img src="/static/home_top.webp" width="80%">
+         </div>
+        </div>
+        
+    </div>      
+  
+    </div>
+   
+    
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Select City</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h4 class="city" scity="Gwalior">Gwalior</h4>
+          <h4 class="city" scity="New Delhi">New Delhi</h4>
+          <h4 class="city" scity="Noida">Noida</h4>
+          <h4 class="city" scity="Pune">Pune</h4>
+          <h4 class="city" scity="Indore">Indore</h4>
+        </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+ 
+
+
+
+</body>
+
+
+
+</html>

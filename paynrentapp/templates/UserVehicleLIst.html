@@ -1,0 +1,246 @@
+<style>
+    .maincontainer{
+        background: #dfe6e9;
+        width: 100%;
+        height: 300%;
+        display: flex;
+        flex-direction: column;
+    }
+    .maintab{
+        background: #dfe6e9;
+        width: 100%;
+        height: 200%;
+        display: flex;
+        flex-direction: row;
+    }
+    .appbar{
+        background: #fff;
+        width: 100%;
+        height: 7%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .leftsidebar{
+        background: #fff;
+        width: 27%;
+        height: 300%;
+        margin-top: 1;
+    }
+    .rightbar{
+        background: #dfe6e9;
+        height: auto;
+        width: 80%;
+    }
+    .rightbartemplate{
+        background: #fff;
+        width: 20%;
+        height: 12%;
+        margin-top: 5%;
+        margin-left: 5%;
+        border-radius: 10%;
+    }
+    .labelstyle{
+        font-family: Poppins;
+        font-size: 16;
+        font-weight: bold;
+        margin-top: 6%;
+        display: flex;
+        margin-left: 25%;
+    }
+    .checkstyle{
+        font-family: Poppins;
+        font-size: 15;
+        margin-top: 1%;
+        display: flex;
+        margin-left: 25%;
+    }
+    .button_style{
+        width: 85px;
+        height: 40px;
+        border: 1px solid #778ca3;
+        border-radius: 10px;
+        margin-top: 30px;
+        background: linear-gradient(270deg, rgb(28, 171, 162) 25%, rgb(28, 127, 171));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script src="/static/uservehicle.js"></script>
+    </head>
+    <body>
+        <div class="maincontainer">
+            <div class="appbar">
+                <img src="/static/Logo1.png" width="48" height="40" style="margin-left: 8%; margin-top: 1%;">
+                <div style="justify-content: center;align-items: center; display: flex; width:800; font-family: Poppins;font-size: 16;">City:{{userdata.city}}  From:{{userdata.starttime}}   To:{{userdata.endtime}} Duration:{{userdata.days}} </div>
+                <div style="margin-left: auto;  width: 17%; display: flex; align-items: center;">
+                    <i style="font-size: 30; margin-right: 4%;" class="fa-solid fa-right-to-bracket"></i>
+                    <span style="margin-right: 5%;">Login & SignUp</span>
+                </div> 
+            </div>
+            <div class="maintab">
+                <div class="leftsidebar">
+                    <div>
+                        <div style=" display: flex;">
+                            <label for="categoryname" class="form-label labelstyle">Filter</label>
+                            <label for="categoryname" class="form-label" style="font-size: 15; font-family: Poppins; justify-content: end; margin-top: 6%; margin-left: 30%; color: #b1bfc1;">clear All</label>
+                        </div>
+                        <div>
+                            <label for="categoryname" class="form-label labelstyle">Segment</label>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Hatchback
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        SUV
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Sedan
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        MUV
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="categoryname" class="form-label labelstyle">Brand</label>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="brand form-check-input" type="checkbox" value="Maruti" >
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Maruti
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="brand form-check-input" type="checkbox" value="Hyundai" >
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Hyundai
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="brand form-check-input" type="checkbox" value="MG" >
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        MG
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="brand form-check-input" type="checkbox" value="Tata">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Tata
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="brand form-check-input" type="checkbox" value="Toyota" >
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Toyota
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="categoryname" class="form-label labelstyle">Fuel Type</label>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Petrol
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Diesel
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="categoryname" class="form-label labelstyle">Transmission Type</label>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Manual
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Automatic
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="categoryname" class="form-label labelstyle">Seating Capacity</label>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        5 seats
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="checkstyle">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        7 seats
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="listvehicle" style="width:100%;display: flex;">
+
+                </div>
+                  
+                
+            </div>
+        </div>
+    </body>
+</html>

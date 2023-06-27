@@ -1,0 +1,100 @@
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .maincontainer{
+    width: 100vw;
+    height: 100vh;
+    background: #81ecec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    background: #fff;
+    width: auto;
+    height: auto;
+    padding: 15px;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+.headingtext{
+    font-size: 22px;
+    font-family: Poppins;
+    font-weight: bold;
+    padding: 5px;
+    letter-spacing: 1px;
+}
+.labelstyle{
+    font-size: 15px;
+    font-family: Poppins;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+</style>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    </head>
+    <div class="maincontainer">
+        <div class="box">
+            <div class="col-md-12 headingtext">
+                <img src="/static/logo.png" style="width: 60px; height: 50px; padding-right: 8px;">
+                List Of Vehicle 
+                <a href="/api/vehicleinterface" style="text-decoration: none; padding-left: 950;" ><img src="/static/add.png" width="50" /></a>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                      <th scope="col">S No.</th>
+                      <th scope="col">Category</th>
+                    
+                      <th scope="col">Model Year</th>
+                      <th scope="col">Variant</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Insurence</th>
+                      <th scope="col">Reg No.</th>
+                      <th scope="col">Owner Name</th>
+                      <th scope="col">Mob No</th>
+                      <th scope="col">Colour</th>
+                      <th scope="col">Fuel Type</th>
+                      <th scope="col">No. Of Seats</th>
+                      <th scope="col">Trans Type</th>
+                      <th scope="col">Picture</th>
+                      <th scope="col">Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in data %}
+                    <tr>
+                        <th scope="row">{{record.id}}</th>
+                        <td>{{record.categoryname}}<br>
+                         {{record.subcategoryname}}</td>
+                        <td>{{record.model_year}}</td>
+                        <td>{{record.variant}}</td>
+                        <td>{{record.price}}</td>
+                        <td>{{record.insured}}</td>
+                        <td>{{record.registration_no}}</td>
+                        <td>{{record.owner_name}}</td>
+                        <td>{{record.mobile_no}}</td>
+                        <td>{{record.color}}</td>
+                        <td>{{record.fuel_type}}</td>
+                        <td>{{record.no_of_seats}}</td>
+                        <td>{{record.transmission_type}}</td>
+                        <td><a style="text-decoration: none;" href="/api/vehicleicondisplay?id={{record.id}}&ci={{record.category_id}}&sci={{record.subcategory_id}}&var={{record.variant}}&icon={{record.icon}}"><img src="/{{record.icon}}" width="40"></a></td>
+                        <td><a style="text-decoration: none;" href="/api/displayvehiclebyid?id={{record.id}}">Edit/Delete</a></td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</html>
